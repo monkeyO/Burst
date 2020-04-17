@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动画</title>
+		<style>
+			div,
+			span {
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				border-radius: 50%;
+			}
+
+			div {
+				transform: rotate(calc(var(--i) * 60deg));
+			}
+
+			span {
+				background: radial-gradient(circle, hsl(143, 100%, 56%), hsl(203, 100%, 56%));
+				--clip-path: polygon(50% 49.9%, 79.5% 100%, 20.5% 100%);
+				-webkit-clip-path: var(--clip-path);
+				clip-path: var(--clip-path);
+				transform-origin: 20% 80%;
+				animation: open 3000ms  normal ease-in-out;
+				animation-fill-mode: forwards;
+				-webkit-animation-fill-mode: forwards;
+				
+			}
+
+			@keyframes open {
+				from {
+					transform: rotate(90deg);
+				}
+
+				to {
+					transform: rotate(0deg);
+				}
+
+			}
+
+			@keyframes gear {
+				100% {
+					transform: rotate(-60deg);
+				}
+			}
+
+			main {
+				position: relative;
+				margin: auto;
+				width: 80vmin;
+				height: 80vmin;
+				overflow: hidden;
+				border: 5vmin double hsl(253, 100%, 20%);
+				border-radius: 50%;
+				background: radial-gradient(circle,
+					hsl(233, 100%, 56%) 0%,
+					hsla(263, 100%, 46%, 0) 80%);
+				animation: gear 6000ms infinite alternate ease-in-out;
+			}
+
+			body {
+				height: 100vh;
+				overflow: hidden;
+				display: flex;
+				background: radial-gradient(circle, hsl(243, 100%, 16%), hsl(243, 100%, 6%));
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div style="--i:1"><span></span></div>
+			<div style="--i:2"><span></span></div>
+			<div style="--i:3"><span></span></div>
+			<div style="--i:4"><span></span></div>
+			<div style="--i:5"><span></span></div>
+			<div style="--i:6"><span></span></div>
+		</main>
+	</body>
+</html>
